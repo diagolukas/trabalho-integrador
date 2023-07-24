@@ -13,7 +13,7 @@ let bebidasCompradas;
 let bebidas;
 
 const carregaBebidas = async () => {
-  const dados = await axios.get("bebidas");
+  const dados = await axios.get("/projeto-integrador/public/assets/bebidas");
 
   bebidas = dados.data;
 
@@ -38,7 +38,7 @@ ${bebida.preco.toLocaleString("pt-br", { minimumFractionDigits: 2 })}</p>
 
   divBebida.innerHTML = resposta;
 
-  bebidasCompradas = localStorage.getItem("bebidas")
+  bebidasCompradas = localStorage.getItem("/projeto-integrador/public/assets/bebidas")
     ? localStorage.getItem("bebidas").split(";")
     : [];
 
@@ -111,7 +111,7 @@ btnCarrinho.addEventListener("click", () => {
 btnFinalizar.addEventListener("click", () => {
   myModal.hide();
 
-  localStorage.removeItem("bebidas");
+  localStorage.removeItem("/projeto-integrador/public/assets/bebidas");
 
   alert("Valeu fera! Sua Bebida chegará em 5 min");
 
@@ -120,7 +120,7 @@ btnFinalizar.addEventListener("click", () => {
 
 btnLimpar.addEventListener("click", () => {
 
-  localStorage.removeItem("bebidas");
+  localStorage.removeItem("/projeto-integrador/public/assets/bebidas");
  
   for (let i = tabBebidas.rows.length - 1; i >= 1; i--) {
     tabBebidas.deleteRow(i);
@@ -140,9 +140,6 @@ btnLimpar.addEventListener("click", () => {
 
   col2.classList.add("text-end");
   col3.classList.add("text-end");
-
-
-
 
   alert("Itens Removidos do carrinho");
   
