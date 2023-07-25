@@ -3,7 +3,7 @@ import cors from "cors"
 import routes from '../projeto-integrador-back/routes.js'
 
 import { sequelize } from './databases/conecta.js'
-import { Bebidas } from '../projeto-integrador-back/models/Bebidas.js'
+import { Bebidas } from './models/Bebidas.js'
 
 const app = express()
 const port = 3000
