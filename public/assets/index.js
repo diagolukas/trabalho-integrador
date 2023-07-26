@@ -13,7 +13,7 @@ let bebidasCompradas;
 let bebidas;
 
 const carregaBebidas = async () => {
-  const dados = await axios.get("/projeto-integrador/public/assets/bebidas");
+  const dados = await axios.get("./databases/ratao.db");
 
   bebidas = dados.data;
 
@@ -38,7 +38,7 @@ ${bebida.preco.toLocaleString("pt-br", { minimumFractionDigits: 2 })}</p>
 
   divBebida.innerHTML = resposta;
 
-  bebidasCompradas = localStorage.getItem("/projeto-integrador/public/assets/bebidas")
+  bebidasCompradas = localStorage.getItem("./databases/ratao.db")
     ? localStorage.getItem("bebidas").split(";")
     : [];
 
@@ -111,7 +111,7 @@ btnCarrinho.addEventListener("click", () => {
 btnFinalizar.addEventListener("click", () => {
   myModal.hide();
 
-  localStorage.removeItem("/projeto-integrador/public/assets/bebidas");
+  localStorage.removeItem("./databases/ratao.db");
 
   alert("Valeu fera! Sua Bebida chegará em 5 min");
 
@@ -120,7 +120,7 @@ btnFinalizar.addEventListener("click", () => {
 
 btnLimpar.addEventListener("click", () => {
 
-  localStorage.removeItem("/projeto-integrador/public/assets/bebidas");
+  localStorage.removeItem("./databases/ratao.db");
  
   for (let i = tabBebidas.rows.length - 1; i >= 1; i--) {
     tabBebidas.deleteRow(i);

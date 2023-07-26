@@ -1,9 +1,8 @@
 import express from 'express'
 import cors from "cors"
-import routes from '../projeto-integrador-back/routes.js'
+import routes from '../projeto-integrador/routes.js'
+import multer from 'multer'
 
-import { sequelize } from './databases/conecta.js'
-import { Bebidas } from '../projeto-integrador-back/models/Bebidas.js'
 
 const app = express()
 const port = 3000
@@ -12,25 +11,15 @@ app.use(express.json())
 app.use(cors())
 app.use(routes)
 
-async function conecta_db() {
-  try {
-    await sequelize.authenticate();
-    console.log('Conexão com banco de dados feita com sucesso');
+app.use('/public/assets/', express.static('./public/assets/'));
 
-    await Bebidas.sync()
-
-  } catch (error) {
-    console.error('Erro na conexão com o banco: ', error);
-  }
-}
-conecta_db()
-
-app.get('/', (req, res) => {
-  res.send('API Ratão Delivery')
+app.get('/',function(req,res){
+    //__dirname retorna o diretorio raiz da aplicação. Aqui estamos pegando o caminho raiz mais o caminho de onde está o html
+    res.sendFile('C:/arquivos de programação/Programador-Sistemas/projeto-integrador/projeto-integrador/public/index.html')
 })
 
-app.use()
+app.use("/images", express.static('./images'))
 
 app.listen(port, () => {
-  console.log(`Servidor Rodando na Porta: ${port}`)
-})
+  console.log(`Rodando em http://localhost:${port}/`);
+});

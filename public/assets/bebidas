@@ -2,56 +2,56 @@
   {
     "id": 1,
     "marca": "Smirnoff",
-    "foto": "./images/smirnoff.png",
+    "foto": "/images/smirnoff.png",
     "preco": 55.5,
     "tipo": "Vodka"
   },
   {
     "id": 2,
     "marca": "Waleska",
-    "foto": "./images/waleska.png",
+    "foto": "/images/waleska.png",
     "preco": 9.5,
     "tipo": "Vodka"
   },
   {
     "id": 3,
     "marca": "Monster",
-    "foto": "./images/monsterlata.png",
+    "foto": "/images/monsterlata.png",
     "preco": 8.5,
     "tipo": "Energético"
   },
   {
     "id": 4,
     "marca": "Skol Lata",
-    "foto": "./images/skollata.png",
+    "foto": "/images/skollata.png",
     "preco": 5,
     "tipo": "Cerveja"
   },
   {
     "id": 5,
     "marca": "Cinquenta e Um",
-    "foto": "./images/cinquentaeum.png",
+    "foto": "/images/cinquentaeum.png",
     "preco": 30,
     "tipo": "Cachaça"
   },
   {
     "id": 6,
     "marca": "Brahma",
-    "foto": "./images/brahmalata.png",
+    "foto": "/images/brahmalata.png",
     "preco": 4.5,
     "tipo": "Cerveja"
   },
   {
     "id": 7,
     "marca": "Jack Daniels",
-    "foto": "./images/jackwhisky.png",
+    "foto": "/images/jackwhisky.png",
     "preco": 120,
     "tipo": "Whisky"
   },
   {
     "id": 8,
     "marca": "Gin",
-    "foto": "./images/gin.png",
+    "foto": "/images/gin.png",
     "preco": 45,
     "tipo": "Destilado"
   }
