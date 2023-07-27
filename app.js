@@ -1,8 +1,6 @@
 import express from 'express'
 import cors from "cors"
 import routes from '../projeto-integrador/routes.js'
-import multer from 'multer'
-
 
 const app = express()
 const port = 3000

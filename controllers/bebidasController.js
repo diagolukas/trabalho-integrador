@@ -1,4 +1,3 @@
-// import { Bebidas } from "../models/Bebidas.js";
 import dbKnex from "../databases/db_config.js";
 
 export const bebidasIndex = async (req, res) => {
@@ -15,7 +14,7 @@ export const bebidasCreate = async (req, res) => {
 
   if (
     (req.file.mimetype != "image/jpeg" && req.file.mimetype != "image/png") ||
-    req.file.size > 2048 * 2048
+    req.file.size > 1024 * 1024
   ) {
     res
       .status(400)

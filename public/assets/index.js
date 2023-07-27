@@ -6,34 +6,33 @@ const myModal = new bootstrap.Modal(document.getElementById("carrinhoModal"));
 
 const btnCarrinho = document.querySelector("#btCarrinho");
 const btnFinalizar = document.querySelector("#btFinalizar");
-const btnLimpar = document.querySelector("#btLimpar")
+const btnLimpar = document.querySelector("#btLimpar");
 
 const tabBebidas = document.querySelector("#tabBebida");
-
 
 let bebidasCompradas;
 let bebidas;
 
 const carregaBebidas = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/bebidas');
+    const response = await axios.get("http://localhost:3000/bebidas");
     const bebidas = response.data;
 
-    let resposta = '';
+    let resposta = "";
 
     for (const bebida of bebidas) {
-      // Codificar a imagem em base64
-      const fotoBase64 = bebida.foto.toString('base64');
 
       resposta += `
         <div class="col-6 col-sm-4 col-md-3">
           <div class="card">
-            <img src="data:images/jpeg;base64,${fotoBase64}" class="card-img-top" alt="tragos">
+            <img src="${bebida.foto}" class="card-img-top" alt="tragos">
             <div class="card-body">
               <h5 class="card-title">${bebida.estoque} - ${bebida.tipo}</h5>
               <p class="card-text">${bebida.nome}</p>
               <p class="card-text">R$: 
-                ${bebida.preco.toLocaleString('pt-br', { minimumFractionDigits: 2 })}
+                ${bebida.preco.toLocaleString("pt-br", {
+                  minimumFractionDigits: 2,
+                })}
               </p>
               <button class="btn btn-primary btAdicionar">Adicionar</button>
             </div>
@@ -43,17 +42,17 @@ const carregaBebidas = async () => {
     }
     divBebida.innerHTML = resposta;
 
-    bebidasCompradas = localStorage.getItem('bebidas')
-      ? localStorage.getItem('bebidas').split(';')
+    bebidasCompradas = localStorage.getItem("bebidas")
+      ? localStorage.getItem("bebidas").split(";")
       : [];
 
     spanBadge.innerText = bebidasCompradas.length;
   } catch (error) {
-    console.error('Erro ao carregar bebidas:', error);
+    console.error("Erro ao carregar bebidas:", error);
   }
 };
 
-carregaBebidas()
+carregaBebidas();
 
 window.addEventListener("load", carregaBebidas);
 
@@ -129,13 +128,11 @@ btnFinalizar.addEventListener("click", () => {
 });
 
 btnLimpar.addEventListener("click", () => {
-
   localStorage.removeItem("bebidas");
- 
+
   for (let i = tabBebidas.rows.length - 1; i >= 1; i--) {
     tabBebidas.deleteRow(i);
   }
-
 
   let total = 0;
 
@@ -152,6 +149,6 @@ btnLimpar.addEventListener("click", () => {
   col3.classList.add("text-end");
 
   alert("Itens Removidos do carrinho");
-  
+
   carregaBebidas();
 });
