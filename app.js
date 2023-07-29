@@ -21,3 +21,26 @@ app.use("/images", express.static('./images'))
 app.listen(port, () => {
   console.log(`Rodando em http://localhost:${port}/`);
 });
+
+app.put("/bebidas/:id", async (req, res) => {
+  try {
+    const bebidaId = req.params.id;
+    const { estoque } = req.body;
+
+    // Validação para garantir que o estoque seja um número inteiro positivo
+    if (!Number.isInteger(estoque) || estoque < 0) {
+      return res.status(400).json({ message: "Estoque inválido" });
+    }
+
+    // Atualize o estoque da bebida no banco de dados
+    await connection.execute(
+      "UPDATE bebidas SET estoque = ? WHERE id = ?",
+      [estoque, bebidaId]
+    );
+
+    res.status(200).json({ message: "Estoque atualizado com sucesso" });
+  } catch (error) {
+    console.error("Erro ao atualizar o estoque:", error);
+    res.status(500).json({ message: "Erro ao atualizar o estoque" });
+  }
+});

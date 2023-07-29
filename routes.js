@@ -8,5 +8,4 @@ router.get('/bebidas', bebidasIndex)
       .post('/bebidas', upload.single('foto'), bebidasCreate)
       .delete('/bebidas/:id', bebidasDestroy)
 
-
 export default router
